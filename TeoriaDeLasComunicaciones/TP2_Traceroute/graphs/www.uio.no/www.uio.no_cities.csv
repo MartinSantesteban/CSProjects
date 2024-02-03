@@ -1,0 +1,7 @@
+,City,Country,Continent,Longitude,Latitude,idx
+0,Córdoba,AR,SA,-64.1756,-31.429,"(0,)"
+1,Drammen,NO,EU,10.1859,59.7429,"(6,)"
+2,London,GB,EU,-0.093,51.5088,"(2, 3)"
+3,Newark,US,NA,-74.1634,40.738,"(1,)"
+4,Oslo,NO,EU,10.859,59.955,"(7,)"
+5,Stockholm,SE,EU,18.0717,59.3287,"(4, 5)"

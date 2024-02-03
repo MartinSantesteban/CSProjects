@@ -1,0 +1,79 @@
+# %%
+import pandas as pd
+import numpy as np
+import seaborn as sns
+import matplotlib.pyplot as plt
+import metnum as mn
+from time import process_time_ns
+# %% 
+cantidad_maxima_iteraciones_POR_AVAL = 1000
+cantidad_autovalores = 50            
+lim_promedio = 100
+epsilons = [1/(10**i) for i in range(0,10)]
+metric_data = pd.DataFrame(data = {"Epsilon":[],"Guarda":[],"Tiempo":[],"Iteraciones":[],"Diferencia":[]})
+print("ok")
+for sample in range(0,lim_promedio): #Por cada sample se randomiza la matriz, y sacmaos un promedio
+    X = pd.DataFrame(np.random.randint(0,100,size=(cantidad_autovalores, cantidad_autovalores)))
+    S = X @ X.T
+    [numpy_eigenvalues, numpy_eigenvectors] = np.linalg.eig(S)
+    numpy_eigenvalues = sorted(list(numpy_eigenvalues),reverse = True)
+    for j in range(1,3):
+        metodo = mn.StopCriterion(j)
+        for e in epsilons:
+            ti = process_time_ns()
+            [[eigenvalues,eigenvectors],total_iterations] =  mn.get_first_eigenvalues(S, cantidad_autovalores,metodo,cantidad_maxima_iteraciones_POR_AVAL,e)
+            tf = process_time_ns()
+            final_time = tf - ti
+            difference= (np.abs(eigenvalues - numpy_eigenvalues)).mean()
+            metric_data = pd.concat([metric_data, pd.DataFrame(data = {"Epsilon":[e],"Guarda":[str(metodo)[14:]],"Tiempo":[final_time],"Iteraciones":[total_iterations],"Diferencia":[difference]})],ignore_index = True)
+    print("Sample: " + str(sample) + " done of " + str(lim_promedio))
+metric_data.to_csv("output/experimento_calidadMetPot.csv")
+# %% Gafico de las diferencias
+metric_data = pd.read_csv("output/experimento_calidadMetPot.csv")
+fig, axes = plt.subplots(1,3,figsize = (15,5))
+metric_data_filtered = metric_data.loc[metric_data["Epsilon"].isin([1e-2,1e-1])]
+metric_data = metric_data.loc[metric_data["Epsilon"] != 1]
+metric_data = metric_data.loc[metric_data["Epsilon"] != 1e-1]
+metric_data = metric_data.loc[metric_data["Epsilon"] != 1e-2]
+metric_data = metric_data.loc[metric_data["Epsilon"] != 1e-3]
+metric_data = metric_data.loc[metric_data["Epsilon"] != 1e-9]
+sns.barplot(data = metric_data_filtered,x = "Epsilon", y = "Diferencia", hue = "Guarda",ax = axes[0], ci = None)
+#metric_data = metric_data.loc[metric_data["Epsilon"] != 1e-4]
+sns.barplot(data = metric_data,x = "Epsilon", y = "Diferencia", hue = "Guarda",ax = axes[1],ci = None)
+metric_data = metric_data.loc[metric_data["Epsilon"] != 1e-4]
+sns.barplot(data = metric_data,x = "Epsilon", y = "Diferencia", hue = "Guarda",ax = axes[2],ci = None)
+plt.savefig("output/img_calidad_guardas.pdf",bbox_inches = "tight")
+
+# %% Grafico de los tiempos
+metric_data = pd.read_csv("output/experimento_calidadMetPot.csv")
+metric_data["Tiempo"] /= 1e9
+fig, ax = plt.subplots(1,1)
+sns.barplot(data = metric_data, y = "Tiempo", x = "Epsilon", hue = "Guarda",ax = ax,ci = None)
+#ax.set_xticklabels(["1e-32","1e-16","1e-8","1e-4","1e-2","1"])
+plt.savefig("output/img_calidad_guardas_times.pdf",bbox_inches = "tight")
+
+
+
+# %%
+cantidad_maxima_iteraciones_POR_AVAL = 1000
+cantidad_autovalores = 50            
+lim_promedio = 1
+epsilons = [1/(10**i) for i in range(0,10)]
+metric_data = pd.DataFrame(data = {"Epsilon":[],"Guarda":[],"Tiempo":[],"Iteraciones":[],"Diferencia":[]})
+print("ok")
+for sample in range(0,lim_promedio): #Por cada sample se randomiza la matriz, y sacmaos un promedio
+    X = pd.DataFrame(np.random.randint(0,100,size=(cantidad_autovalores, cantidad_autovalores)))
+    S = X @ X.T
+    [numpy_eigenvalues, numpy_eigenvectors] = np.linalg.eig(S)
+    numpy_eigenvalues = sorted(list(numpy_eigenvalues),reverse = True)
+    for j in range(1,3):
+        metodo = mn.StopCriterion(j)
+        for e in epsilons:
+            ti = process_time_ns()
+            [[eigenvalues,eigenvectors],total_iterations] =  mn.get_first_eigenvalues(S, cantidad_autovalores,metodo,cantidad_maxima_iteraciones_POR_AVAL,e)
+            tf = process_time_ns()
+            final_time = tf - ti
+            difference= (np.abs(eigenvalues - numpy_eigenvalues)).mean()
+            metric_data = pd.concat([metric_data, pd.DataFrame(data = {"Epsilon":[e],"Guarda":[str(metodo)[14:]],"Tiempo":[final_time],"Iteraciones":[total_iterations],"Diferencia":[difference]})],ignore_index = True)
+    print("Sample: " + str(sample) + " done of " + str(lim_promedio))
+print(metric_data)

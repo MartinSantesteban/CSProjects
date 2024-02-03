@@ -1,0 +1,10 @@
+,City,Country,Continent,Longitude,Latitude,idx
+0,Amsterdam,NL,EU,4.8975,52.3759,"(3,)"
+1,Chicago,US,NA,-87.6318,41.8874,"(6,)"
+2,Chiyoda,JP,AS,139.753595,35.694003,"(9,)"
+3,Córdoba,AR,SA,-64.1756,-31.429,"(0, 1)"
+4,Frankfurt am Main,DE,EU,8.6843,50.1188,"(7,)"
+5,Inzai,JP,AS,140.1504,35.8442,"(8,)"
+6,London,GB,EU,-0.093,51.5088,"(2,)"
+7,Paris,FR,EU,2.4075,48.8323,"(4,)"
+8,Prior Lake,US,NA,-93.4129,44.7098,"(5,)"

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<!--<html style="background-position: bottom right;background-repeat: no-repeat;background-image: url('https://static.wikia.nocookie.net/superheroes/images/6/64/Perry_the_platypus_by_sarrel-d3gvo02.png/revision/latest?cb=20140223190228'); background-size: 800px;">-->
+<html>
+  <head>
+    <title>Taller de JavaScript</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script type="text/javascript" src="taller.js"></script>
+    <script type="text/javascript">
+    function fail(i, m) {
+      resultado.innerHTML += " - Falló el test " + i;
+      if (m) {
+        resultado.innerHTML += ": " + m;
+      }
+      resultado.innerHTML += "<br/><br/>"
+    }
+    function si_o_no(bool) {
+      return (bool ? " " : " <b>NO</b> ")
+    }
+    function nombre(objeto) {
+      if (objeto) return objeto.nombre;
+      return "Ninguno";
+    }
+    function calcularResultado() {
+    	// Elegir una de estas 3
+    	return correrSoloTests();
+    	//return correrFuncionesYDespuesTests();
+    	//return correrFuncionesYTestsIntercalados()();
+    }
+    function correrSoloTests() {
+    	return recorridoEjercicios(ejecutarTest);
+    }
+    function correrFuncionesYDespuesTests() {
+    	ejecutarFunciones();
+    	return recorridoEjercicios(ejecutarTest);
+    }
+    function correrFuncionesYTestsIntercalados() {
+    	return recorridoEjercicios(crearTest);
+    }
+    function ejecutarFunciones() {
+    	var i = 1;
+    	while (eval("typeof ejercicio" + i)!=="undefined") {
+    		eval("ejercicio"+i)();
+    		i++;
+    	}
+    }
+	  function recorridoEjercicios(f) {
+      let res = "";
+      res += "<b>Ejemplo</b>\n" + f(0, testEjemplo);
+      res += "\n";
+      res += "<b>Ejercicio 1</b>\n" + f(1, testEjercicio1);
+      res += "\n";
+      res += "<b>Ejercicio 2</b>\n" + f(2, testEjercicio2);
+      res += "\n";
+      res += "<b>Ejercicio 3</b>\n" + f(3, testEjercicio3);
+      res += "\n";
+      res += "<b>Ejercicio 4</b>\n" + f(4, testEjercicio4);
+      res += "\n";
+      res += "<b>Ejercicio 5</b>\n" + f(5, testEjercicio5);
+      res += "\n";
+      res += "<b>Ejercicio 6</b>\n" + f(6, testEjercicio6);
+      return res;
+    }
+    // Función auxiliar que crea un test genérico a partir de un número i y una función f
+    function crearTest(i, f) {
+      if (eval("typeof ejercicio" + i)!=="undefined") {
+        eval("ejercicio"+i)();
+      }
+      return ejecutarTest(i, f);
+    }
+    function ejecutarTest(i, f) {
+      let res = {
+        text:"",
+        write: function(s, t) {
+          if (t!=undefined) {
+            if (t) s = "<span style='color:green'>" + s + "</span>";
+            else s = "<span style='color:red'>" + s + "</span>";
+          }
+          s += "\n";
+          this.text += s;
+        }
+      };
+      try {
+        f(res);
+      } catch (e) {
+        fail(i, e);
+      }
+      return res.text;
+    }
+    </script>
+  </head>
+<body>
+  <h1>Taller de Javascript</h1>
+  <div>
+    <h2>Instrucciones</h2>
+    <p>Editen el archivo taller.js y luego recarguen esta p&aacute;gina para ver el resultado de la ejecuci&oacute;n.</p>
+    <p>Probablemente necesiten recargar con <b>Ctrl+F5</b> para limpiar la cach&eacute;.
+  </div>
+  <div id="errores" hidden>
+    <div><h2>Errores</h2></div>
+    <div id="resultado" style="border-style: groove;"></div>
+  </div>
+  <div><h2>Salida</h2></div>
+  <div id="salida" style="border-style: groove;"></div>
+</body>
+<script type="text/javascript">
+  let salida = document.getElementById("salida");
+  let resultado = document.getElementById("resultado");
+  salida.innerHTML = calcularResultado().replace(/\n/g,"<br/>");
+  if (resultado.innerHTML) {
+    document.getElementById("errores").hidden = false;
+  }
+</script>
+</html>

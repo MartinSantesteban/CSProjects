@@ -1,0 +1,8 @@
+,City,Country,Continent,Longitude,Latitude,idx
+0,Ashburn,US,NA,-77.539,39.018,"(8,)"
+1,Berlin,DE,EU,13.4069,52.5196,"(9,)"
+2,Chicago,US,NA,-87.6318,41.8874,"(4,)"
+3,Córdoba,AR,SA,-64.1756,-31.429,"(0, 1)"
+4,London,GB,EU,-0.093,51.5088,"(2,)"
+5,Paris,FR,EU,2.4075,48.8323,"(3, 7)"
+6,Prior Lake,US,NA,-93.4129,44.7098,"(5, 6)"

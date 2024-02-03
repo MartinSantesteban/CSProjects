@@ -1,0 +1,4 @@
+/home/firewill/Escritorio/TP1_SO/entregable/build/CMakeFiles/tp_sistemas.dir
+/home/firewill/Escritorio/TP1_SO/entregable/build/CMakeFiles/tiempos_sistemas.dir
+/home/firewill/Escritorio/TP1_SO/entregable/build/CMakeFiles/edit_cache.dir
+/home/firewill/Escritorio/TP1_SO/entregable/build/CMakeFiles/rebuild_cache.dir

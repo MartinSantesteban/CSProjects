@@ -1,0 +1,1 @@
+En este directorio se encuentran los trabajos practicos de Teoria de las comunicaciones, desarrollados junto con [https://www.linkedin.com/in/pablo-segre-maturano-0b83a7216/] (Alejandro Schwartzmann),[https://www.linkedin.com/in/uriel-nicolas-stemberg/](Uriel Stemberg) y [https://www.linkedin.com/in/martin-sztajn-38481017b/](Martin Sztajn).

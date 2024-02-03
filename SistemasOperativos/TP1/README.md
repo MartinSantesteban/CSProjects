@@ -1,0 +1,1 @@
+En este directorio se encuentra el trabajo práctico de la materia Sistemas Operativos, que se desarrollo junto con [https://www.linkedin.com/in/teo-kohan/](Teo Kohan), [https://www.linkedin.com/in/santiago-pl%C3%A1-b01a35201/](Santiago Pla) y [https://www.linkedin.com/in/joaquinmoralespessacq/](Joaquin Morales Pessacq).

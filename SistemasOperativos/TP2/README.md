@@ -1,1 +1,1 @@
-Este trabajo práctico se realizo junto con [https://www.linkedin.com/in/teo-kohan/](Teo Kohan), [https://www.linkedin.com/in/fabrizio-p-ba43aab8/](Fabrizio Prida) y [https://www.linkedin.com/in/tom%C3%A1s-donzis-5439bb192/](Tomas Donzis).
+Este trabajo práctico se realizo junto con [Teo Kohan](https://www.linkedin.com/in/teo-kohan/), [Fabrizio Prida](https://www.linkedin.com/in/fabrizio-p-ba43aab8/) y [Tomas Donzis](https://www.linkedin.com/in/tom%C3%A1s-donzis-5439bb192/).

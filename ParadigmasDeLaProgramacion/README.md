@@ -1,1 +1,1 @@
-En este directorio se encuentran los trabajos de la materia Paradigmas de la progrmacion, desarrollados junto con Simon Lew y [https://www.linkedin.com/in/lautaro-monteys-21b241239/](Lautaro Monteys).
+En este directorio se encuentran los trabajos de la materia Paradigmas de la progrmacion, desarrollados junto con Simon Lew y [Lautaro Monteys](https://www.linkedin.com/in/lautaro-monteys-21b241239/).
